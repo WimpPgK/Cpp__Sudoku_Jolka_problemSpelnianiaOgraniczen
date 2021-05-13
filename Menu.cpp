@@ -19,12 +19,12 @@ void Menu::start()
 	Sleep(500);
 	switch (problemNumber)
 	{
-		case 1:
+		case 1:			//dla gry sudoku
 			system("cls");
-			showUserInterface02();
+			showUserInterface02();				// menu wybor algorytmu
 			cin >> algorithmNumber;
 			system("cls");
-			showUserInterface03(problemNumber);
+			showUserInterface03(problemNumber); // menu wybor konkretnego problemu
 			cin>> datasetNumber;
 			system("cls");
 			sudoku.init(datasetNumber);
@@ -32,12 +32,12 @@ void Menu::start()
 			break;
 		
 		
-		case 2:
+		case 2:			// dla gry fill in
 			system("cls");
-			showUserInterface02();
+			showUserInterface02();				// menu wybor algorytmu
 			cin >> algorithmNumber;
 			system("cls");
-			showUserInterface03(problemNumber);
+			showUserInterface03(problemNumber);	// menu wybor konkretnego problemu
 			cin >> datasetNumber;
 			system("cls");
 			puzzle.init(datasetNumber);

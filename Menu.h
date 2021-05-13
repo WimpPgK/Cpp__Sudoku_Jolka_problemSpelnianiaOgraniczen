@@ -2,9 +2,9 @@
 class Menu
 {
 private:
-	void showUserInterface01();
-	void showUserInterface02();
-	void showUserInterface03(int problemNumber);
+	void showUserInterface01();						// menu wybor gry
+	void showUserInterface02();						// menu wybor algorytmu rozwiazujacego gre
+	void showUserInterface03(int problemNumber);	//wybor konkretnej zagadki
 public:
 	void start();
 

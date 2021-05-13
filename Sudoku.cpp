@@ -24,7 +24,7 @@ void Sudoku::solve(int algorithmNumber)
 		cout << "Sollution wasn't found. " << endl << endl;
 	}
 	/*
-		Wypisanie danych o procesie.
+		Wypisanie danych o procesie, jesli znaleziono rozwiazanie.
 	*/
 	auto finish = std::chrono::high_resolution_clock::now();
 	cout << "Number of backtracks:		 " << numberOfBacktracks << endl;
@@ -124,6 +124,7 @@ bool Sudoku::checkConditions(int position_x, int position_y, char number)
 
 }
 
+// sprawdza, czy usupelniona wartosc jest zgodna z zasadami dla kolumn
 bool Sudoku::checkColumn(int position_x, int position_y, char number)
 {
 	for (int i = 0; i < n; i++)
@@ -135,6 +136,8 @@ bool Sudoku::checkColumn(int position_x, int position_y, char number)
 	}
 	return true;
 }
+
+// sprawdza, czy usupelniona wartosc jest zgodna z zasadami dla wierszy
 bool Sudoku::checkRow(int position_x, int position_y, char number)
 {
 	for (int i = 0; i < n; i++)
@@ -146,6 +149,8 @@ bool Sudoku::checkRow(int position_x, int position_y, char number)
 	}
 	return true;
 }
+
+// sprawdza, czy usupelniona wartosc jest zgodna z zasadami dla kwadratow
 bool Sudoku::checkSquare(int position_x, int position_y, char number)
 {
 
@@ -171,6 +176,7 @@ bool Sudoku::checkSquare(int position_x, int position_y, char number)
 	return true;
 }
 
+// probne wstawianie liczby do planszy
 void Sudoku::domainAdd(int position_x, int position_y, char number)
 {	
 	// ustawiamy ze wstawiona liczba jest juz zajeta dla calego wiersza
@@ -189,7 +195,7 @@ void Sudoku::domainAdd(int position_x, int position_y, char number)
 	int xSquareIndex = position_x / squareSize;
 	int ySquareIndex = position_y / squareSize;
 	int positionOfSquareBegining_x = squareSize * xSquareIndex;
-	int positionOfSquareBegining_y = squareSize *ySquareIndex;
+	int positionOfSquareBegining_y = squareSize * ySquareIndex;
 
 	for (int i = 0; i < squareSize; i++)
 	{
@@ -199,6 +205,8 @@ void Sudoku::domainAdd(int position_x, int position_y, char number)
 		}
 	}
 }
+
+// usuwanie liczby z planszy, jesli okazala sie bledna
 void Sudoku::domainRemove(int position_x, int position_y, char number)
 {
 	// ustawiamy ze przeslana liczba jest juz dozwolona dla wszystkich pozycji w calym wierszu
@@ -286,7 +294,7 @@ void Sudoku::init(int datasetNumber)
 	}
 
 	int iterator = 0;
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < n; i++)			// przekonwertowanie liniowego stringa na plansze 2d
 	{
 		for (int j = 0; j < n; j++)
 		{
